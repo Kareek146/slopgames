@@ -1,57 +1,41 @@
 -- Nyx | +1 Speed Ninja Escape
-print("✅ Nyx +1 Speed Ninja Escape loaded")
+print("Nyx +1 Speed Ninja Escape loaded")
 
-local player = game.Players.LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Rayfield/main/source"))()
 
-local function notify(title, text)
-    game.StarterGui:SetCore("SendNotification", {
-        Title = title;
-        Text = text;
-        Duration = 5;
-    })
-end
+local Window = Library:CreateWindow({
+    Name = "Nyx - +1 Speed Ninja Escape",
+    LoadingTitle = "Nyx",
+    LoadingSubtitle = "Cheats",
+    ConfigurationSaving = {Enabled = true, FolderName = "Nyx", FileName = "SpeedNinja"}
+})
 
-notify("Nyx", "+1 Speed Ninja Escape - Załadowano!")
+local Tab = Window:CreateTab("Main", 4483362458)
 
--- =================== PRZYCISKI ===================
+Tab:CreateSection("Twoje Skrypty")
 
--- Przycisk Add Speed x1000
-local btn1 = Instance.new("TextButton")
-btn1.Name = "NyxSpeedBtn"
-btn1.Size = UDim2.new(0, 220, 0, 60)
-btn1.Position = UDim2.new(0.5, -110, 0.3, 0)
-btn1.BackgroundColor3 = Color3.fromRGB(0, 180, 255)
-btn1.Text = "Add Speed x1000"
-btn1.TextColor3 = Color3.new(1,1,1)
-btn1.TextSize = 18
-btn1.Font = Enum.Font.GothamBold
-btn1.Parent = playerGui
+-- =================== WLEJ SWOJE KODY COBALT ===================
 
-btn1.MouseButton1Click:Connect(function()
-    for i = 1, 1000 do
-        local Event = game:GetService("ReplicatedStorage").Events.AddSpeed
-        pcall(function() Event:FireServer() end)
+Tab:CreateButton({
+    Name = "Add Speed x1000",
+    Callback = function()
+        for i = 1, 1000 do
+            local Event = game:GetService("ReplicatedStorage").Events.AddSpeed
+            Event:FireServer()
+        end
     end
-    notify("Nyx", "✅ Add Speed x1000 wykonane!")
-end)
+})
 
--- Przycisk Request Rebirth
-local btn2 = Instance.new("TextButton")
-btn2.Name = "NyxRebirthBtn"
-btn2.Size = UDim2.new(0, 220, 0, 60)
-btn2.Position = UDim2.new(0.5, -110, 0.45, 0)
-btn2.BackgroundColor3 = Color3.fromRGB(255, 80, 80)
-btn2.Text = "Request Rebirth"
-btn2.TextColor3 = Color3.new(1,1,1)
-btn2.TextSize = 18
-btn2.Font = Enum.Font.GothamBold
-btn2.Parent = playerGui
+Tab:CreateButton({
+    Name = "Request Rebirth",
+    Callback = function()
+        local Event = game:GetService("ReplicatedStorage").Events.RequestRebirth
+        Event:InvokeServer()
+    end
+})
 
-btn2.MouseButton1Click:Connect(function()
-    local Event = game:GetService("ReplicatedStorage").Events.RequestRebirth
-    pcall(function() Event:InvokeServer() end)
-    notify("Nyx", "✅ Rebirth wysłany!")
-end)
+-- Dodawaj kolejne przyciski tutaj w ten sam sposób
 
-notify("Nyx", "Przyciski są na ekranie!")
+-- ================================================================
+
+Library:Notify({Title = "Nyx", Content = "+1 Speed Ninja Escape loaded!", Duration = 5})
