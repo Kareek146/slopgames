@@ -46,4 +46,4 @@ LeftGroupBox:AddButton({
     end
 })
 
-print("Nyx menu loaded with Wins Farm teleport")
+print("Nyx")
