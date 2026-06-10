@@ -1,41 +1,42 @@
 -- Nyx | +1 Speed Ninja Escape
-print("Nyx +1 Speed Ninja Escape loaded")
+print("✅ Nyx +1 Speed Ninja Escape loaded")
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Rayfield/main/source"))()
+local repo = "https://raw.githubusercontent.com/mstudio45/LinoriaLib/main/"
+local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
 
 local Window = Library:CreateWindow({
-    Name = "Nyx - +1 Speed Ninja Escape",
-    LoadingTitle = "Nyx",
-    LoadingSubtitle = "Cheats",
-    ConfigurationSaving = {Enabled = true, FolderName = "Nyx", FileName = "SpeedNinja"}
+    Title = "Nyx - +1 Speed Ninja Escape",
+    Center = true,
+    AutoShow = true,
 })
 
-local Tab = Window:CreateTab("Main", 4483362458)
+local Tab = Window:AddTab("Main")
 
-Tab:CreateSection("Twoje Skrypty")
+-- Poprawna metoda w tej wersji LinoriaLib
+local LeftGroupBox = Tab:AddLeftGroupbox("DESTROYING SLOP GAMES")
 
--- =================== WLEJ SWOJE KODY COBALT ===================
-
-Tab:CreateButton({
-    Name = "Add Speed x1000",
-    Callback = function()
+LeftGroupBox:AddButton({
+    Text = "Add Speed x1000",
+    Func = function()
         for i = 1, 1000 do
-            local Event = game:GetService("ReplicatedStorage").Events.AddSpeed
-            Event:FireServer()
+            pcall(function()
+                local Event = game:GetService("ReplicatedStorage").Events.AddSpeed
+                Event:FireServer()
+            end)
         end
+        Library:Notify("Speed x1000 wykonane!", 4)
     end
 })
 
-Tab:CreateButton({
-    Name = "Request Rebirth",
-    Callback = function()
-        local Event = game:GetService("ReplicatedStorage").Events.RequestRebirth
-        Event:InvokeServer()
+LeftGroupBox:AddButton({
+    Text = "Request Rebirth",
+    Func = function()
+        pcall(function()
+            local Event = game:GetService("ReplicatedStorage").Events.RequestRebirth
+            Event:InvokeServer()
+        end)
+        Library:Notify("Rebirth wysłany!", 4)
     end
 })
 
--- Dodawaj kolejne przyciski tutaj w ten sam sposób
-
--- ================================================================
-
-Library:Notify({Title = "Nyx", Content = "+1 Speed Ninja Escape loaded!", Duration = 5})
+Library:Notify("Nyx +1 Speed Ninja Escape załadowany!", 6)
