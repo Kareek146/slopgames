@@ -1,19 +1,20 @@
-print("Nyx loaded")
+-- Nyx | +1 Speed Ninja Escape
+print("Nyx +1 Speed Ninja Escape loaded")
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Rayfield/main/source"))()
 
 local Window = Library:CreateWindow({
-    Name = "Nyx - NazwaGry",
+    Name = "Nyx - +1 Speed Ninja Escape",
     LoadingTitle = "Nyx",
     LoadingSubtitle = "Cheats",
-    ConfigurationSaving = {Enabled = true, FolderName = "Nyx", FileName = "NazwaGry"}
+    ConfigurationSaving = {Enabled = true, FolderName = "Nyx", FileName = "SpeedNinja"}
 })
 
 local Tab = Window:CreateTab("Main", 4483362458)
 
 Tab:CreateSection("Twoje Skrypty")
 
--- =================== TUTAJ WLEJASZ SWOJE KODY ===================
+-- =================== WLEJ SWOJE KODY COBALT ===================
 
 Tab:CreateButton({
     Name = "Add Speed x1000",
@@ -33,8 +34,8 @@ Tab:CreateButton({
     end
 })
 
--- Dodaj kolejne przyciski w ten sam sposób ↑
+-- Dodawaj kolejne przyciski tutaj w ten sam sposób
 
 -- ================================================================
 
-Library:Notify({Title = "Nyx", Content = "Załadowano skrypty!", Duration = 5})
+Library:Notify({Title = "Nyx", Content = "+1 Speed Ninja Escape loaded!", Duration = 5})
