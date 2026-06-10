@@ -1,0 +1,40 @@
+print("Nyx loaded")
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Rayfield/main/source"))()
+
+local Window = Library:CreateWindow({
+    Name = "Nyx - NazwaGry",
+    LoadingTitle = "Nyx",
+    LoadingSubtitle = "Cheats",
+    ConfigurationSaving = {Enabled = true, FolderName = "Nyx", FileName = "NazwaGry"}
+})
+
+local Tab = Window:CreateTab("Main", 4483362458)
+
+Tab:CreateSection("Twoje Skrypty")
+
+-- =================== TUTAJ WLEJASZ SWOJE KODY ===================
+
+Tab:CreateButton({
+    Name = "Add Speed x1000",
+    Callback = function()
+        for i = 1, 1000 do
+            local Event = game:GetService("ReplicatedStorage").Events.AddSpeed
+            Event:FireServer()
+        end
+    end
+})
+
+Tab:CreateButton({
+    Name = "Request Rebirth",
+    Callback = function()
+        local Event = game:GetService("ReplicatedStorage").Events.RequestRebirth
+        Event:InvokeServer()
+    end
+})
+
+-- Dodaj kolejne przyciski w ten sam sposób ↑
+
+-- ================================================================
+
+Library:Notify({Title = "Nyx", Content = "Załadowano skrypty!", Duration = 5})
