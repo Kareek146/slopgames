@@ -12,8 +12,7 @@ local Window = Library:CreateWindow({
 
 local Tab = Window:AddTab("Main")
 
--- Poprawna metoda w tej wersji LinoriaLib
-local LeftGroupBox = Tab:AddLeftGroupbox("DESTROYING SLOP GAMES")
+local LeftGroupBox = Tab:AddLeftGroupbox("Twoje Skrypty")
 
 LeftGroupBox:AddButton({
     Text = "Add Speed x1000",
@@ -24,7 +23,6 @@ LeftGroupBox:AddButton({
                 Event:FireServer()
             end)
         end
-        Library:Notify("Speed x1000 wykonane!", 4)
     end
 })
 
@@ -35,8 +33,10 @@ LeftGroupBox:AddButton({
             local Event = game:GetService("ReplicatedStorage").Events.RequestRebirth
             Event:InvokeServer()
         end)
-        Library:Notify("Rebirth wysłany!", 4)
     end
 })
 
-Library:Notify("Nyx +1 Speed Ninja Escape załadowany!", 6)
+-- Dodawaj kolejne przyciski tutaj ↓
+-- LeftGroupBox:AddButton({ Text = "Nazwa przycisku", Func = function() ... end })
+
+print("Nyx menu loaded - bez powiadomień")
